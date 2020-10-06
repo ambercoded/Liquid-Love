@@ -13,11 +13,25 @@ struct ContentView: View {
         FetchedResults<Wine>
     @State private var showingAddView = false
     
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("\(wines.count)")
+            List {
+                ForEach(wines, id: \.self) { wine in
+                    HStack {
+                        
+                        EmojiRatingView(rating: wine.rating)
+                        
+                        VStack(alignment: .leading) {
+                            Text(wine.name ?? "Unknown Wine Name")
+                                .font(.title)
+                            Text(wine.category ?? "Unknown Category")
+                            Text(wine.tasteCategory ?? "Unknown Style")
+                    }
+                    }
+                }
             }
+            
             .navigationBarItems(trailing: Button(action: { showingAddView.toggle() }, label: {
                 Image(systemName: "plus")
             })

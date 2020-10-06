@@ -10,8 +10,8 @@ import SwiftUI
 struct AddWineView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
-    let categories = ["Weißwein", "Rotwein", "Roséwein"]
-    let tasteCategories = ["Trocken", "Halbtrocken", "Lieblich"]
+    let categories = ["White wine", "Red wine", "Rosé wine"]
+    let tasteCategories = ["Dry", "Semi-dry", "Sweet"]
     
     @State private var name = ""
     @State private var price = ""
@@ -20,41 +20,68 @@ struct AddWineView: View {
     @State private var notes = ""
     @State private var placeOfPurchase = ""
     
-    @State private var category = "Weißwein"
-    @State private var tasteCategory = "Trocken"
+    @State private var category = "White wine"
+    @State private var tasteCategory = "Dry"
+    
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
     
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    TextField("Name", text:$name)
-                    Picker("Kategorie", selection: $category) {
-                        ForEach(categories, id:\.self) {
-                            Text($0)
+            ZStack {
+                Form {
+                    Section {
+                        TextField("Name", text:$name)
+                        Picker("Category", selection: $category) {
+                            ForEach(categories, id:\.self) {
+                                Text($0)
+                            }
                         }
-                    }
-                    Picker("Geschmack", selection: $tasteCategory) {
-                        ForEach(tasteCategories, id:\.self) {
-                            Text($0)
+                        Picker("Style", selection: $tasteCategory) {
+                            ForEach(tasteCategories, id:\.self) {
+                                Text($0)
+                            }
                         }
+                        TextField("Price", text:$price)
+                            .keyboardType(.decimalPad)
+                        
                     }
-                    TextField("Preis", text:$price)
-                        .keyboardType(.decimalPad)
                     
-                }
-                
-                Section {
-                    RatingView(rating: $rating)
-                    TextField("Notizen", text:$notes)
-                }
-                
-                Section {
-                    Button("Wein eintragen") {
-                        saveWine()
+                    Section {
+                        RatingView(rating: $rating)
+                        TextField("Some thoughts", text:$notes)
+                    }
+                    
+                    Section {
+                        Button("Store it in my cellar") {
+                            saveWine()
+                        }
                     }
                 }
-            }.navigationBarTitle("Wein hinzufügen")
+                
+                
+                    
+            }.navigationBarTitle("Add a wine")
+            .background(
+                VStack {
+                    HStack {
+                        Spacer()
+                        Spacer()
+                        Image("wine")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            .frame(width: 450, alignment: .trailing)
+                            .opacity(0.1)
+                            .padding()
+                        Spacer()
+                    }
+                    Spacer()
+                })
+                
         }
+        
+     
     }
     
     func saveWine() {
@@ -78,5 +105,6 @@ struct AddWineView: View {
 struct AddWineView_Previews: PreviewProvider {
     static var previews: some View {
         AddWineView()
+            .preferredColorScheme(.dark)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A01FD9A252C4B8600119D9C /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01FD99252C4B8600119D9C /* EmojiRatingView.swift */; };
 		3A41C5EB2528D3A700C80AE9 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41C5EA2528D3A700C80AE9 /* RatingView.swift */; };
 		3A57A7DE25288FA100B29983 /* AddWineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57A7DD25288FA100B29983 /* AddWineView.swift */; };
 		3AA50E2B25275E6500FF83EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA50E2A25275E6500FF83EE /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A01FD99252C4B8600119D9C /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
 		3A41C5EA2528D3A700C80AE9 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		3A57A7DD25288FA100B29983 /* AddWineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWineView.swift; sourceTree = "<group>"; };
 		3AA50E2725275E6500FF83EE /* Liquid Love.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Liquid Love.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 				3A41C5EA2528D3A700C80AE9 /* RatingView.swift */,
 				3AA50E2A25275E6500FF83EE /* AppDelegate.swift */,
 				3A57A7DD25288FA100B29983 /* AddWineView.swift */,
+				3A01FD99252C4B8600119D9C /* EmojiRatingView.swift */,
 				3AA50E2C25275E6500FF83EE /* SceneDelegate.swift */,
 				3AA50E3325275E6500FF83EE /* Assets.xcassets */,
 				3AA50E3825275E6500FF83EE /* LaunchScreen.storyboard */,
@@ -277,6 +280,7 @@
 			files = (
 				3A57A7DE25288FA100B29983 /* AddWineView.swift in Sources */,
 				3AA50E2B25275E6500FF83EE /* AppDelegate.swift in Sources */,
+				3A01FD9A252C4B8600119D9C /* EmojiRatingView.swift in Sources */,
 				3AA50E3225275E6500FF83EE /* Liquid_Love.xcdatamodeld in Sources */,
 				3A41C5EB2528D3A700C80AE9 /* RatingView.swift in Sources */,
 				3AA50E2D25275E6500FF83EE /* SceneDelegate.swift in Sources */,
