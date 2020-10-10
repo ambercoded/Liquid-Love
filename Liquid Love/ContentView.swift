@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Wine.entity(), sortDescriptors: []) var wines:
+    @FetchRequest(entity: Wine.entity(), sortDescriptors: [
+                    NSSortDescriptor(keyPath: \Wine.rating, ascending: false),
+                    NSSortDescriptor(keyPath: \Wine.name, ascending: true)
+    ]) var wines:
         FetchedResults<Wine>
     @State private var showingAddView = false
     
@@ -18,15 +21,15 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(wines, id: \.self) { wine in
-                    HStack {
+                    NavigationLink(destination: DetailWineView(wine: wine)) {
                         
                         EmojiRatingView(rating: wine.rating)
                         
                         VStack(alignment: .leading) {
                             Text(wine.name ?? "Unknown Wine Name")
-                                .font(.title)
-                            Text(wine.category ?? "Unknown Category")
-                            Text(wine.tasteCategory ?? "Unknown Style")
+                                .font(.headline)
+                            Text("\(wine.tasteCategory ?? "Unknown Style") \(wine.category ?? "Unknown Category")")
+                                .foregroundColor(.secondary)
                     }
                     }
                 }

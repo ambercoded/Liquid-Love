@@ -19,6 +19,7 @@
 		3AA50E3A25275E6500FF83EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AA50E3825275E6500FF83EE /* LaunchScreen.storyboard */; };
 		3AA50E4525275E6500FF83EE /* Liquid_LoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA50E4425275E6500FF83EE /* Liquid_LoveTests.swift */; };
 		3AA50E5025275E6600FF83EE /* Liquid_LoveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA50E4F25275E6600FF83EE /* Liquid_LoveUITests.swift */; };
+		3AACB27125319CBD00523B01 /* DetailWineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AACB27025319CBD00523B01 /* DetailWineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		3AA50E4B25275E6600FF83EE /* Liquid LoveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Liquid LoveUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA50E4F25275E6600FF83EE /* Liquid_LoveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Liquid_LoveUITests.swift; sourceTree = "<group>"; };
 		3AA50E5125275E6600FF83EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AACB27025319CBD00523B01 /* DetailWineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				3AA50E2E25275E6500FF83EE /* ContentView.swift */,
 				3A41C5EA2528D3A700C80AE9 /* RatingView.swift */,
+				3AACB27025319CBD00523B01 /* DetailWineView.swift */,
 				3AA50E2A25275E6500FF83EE /* AppDelegate.swift */,
 				3A57A7DD25288FA100B29983 /* AddWineView.swift */,
 				3A01FD99252C4B8600119D9C /* EmojiRatingView.swift */,
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AACB27125319CBD00523B01 /* DetailWineView.swift in Sources */,
 				3A57A7DE25288FA100B29983 /* AddWineView.swift in Sources */,
 				3AA50E2B25275E6500FF83EE /* AppDelegate.swift in Sources */,
 				3A01FD9A252C4B8600119D9C /* EmojiRatingView.swift in Sources */,
