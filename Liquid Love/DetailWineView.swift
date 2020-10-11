@@ -33,14 +33,22 @@ struct DetailWineView: View {
                         .offset(x: -5, y: -5)
                 }
                 
-                Text("\"\(wine.notes ?? "notes placeholder")\"")
+                if wine.notes == "" {
+                    Text("You did not take any notes on this wine.")
+                    .italic()
                     .padding()
+                } else {
+                    Text("\"\(wine.notes ?? "notes placeholder")\"")
+                    .italic()
+                    .padding()
+                }
                 
                 RatingView(rating: .constant(Int(wine.rating)))
                 
                 Text("\(wine.price ?? "1000€") €")
-                    .font(.caption)
                     .padding()
+                
+                Text(composeDateAddedSentence(for: wine))
                 
                 Spacer()
                 
@@ -61,6 +69,25 @@ struct DetailWineView: View {
             )
         }
         .navigationBarTitle(wine.name ?? "No name Wine")
+    }
+    
+    func getFormattedWineAddedDate(for wine: Wine) -> String? {
+        if let dateAdded = wine.dateAdded {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            let formattedDate = formatter.string(from: dateAdded)
+            return formattedDate
+        } else {
+            return nil
+        }
+    }
+    
+    func composeDateAddedSentence(for wine: Wine) -> String {
+        if let formattedDate = getFormattedWineAddedDate(for: wine) {
+            return "You added this wine on: \(formattedDate)"
+        } else {
+            return "Could not track when this wine was added."
+        }
     }
     
     func showAlertPreDelete() {

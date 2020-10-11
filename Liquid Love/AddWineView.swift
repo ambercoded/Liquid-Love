@@ -23,6 +23,13 @@ struct AddWineView: View {
     @State private var category = "White wine"
     @State private var tasteCategory = "Dry"
     
+    var detailsAreIncomplete: Bool {
+        if name.isEmpty || price.isEmpty {
+            return true
+        }
+        return false
+    }
+    
     init() {
         UITableView.appearance().backgroundColor = .clear
     }
@@ -57,6 +64,7 @@ struct AddWineView: View {
                         Button("Store it in my cellar") {
                             saveWine()
                         }
+                        .disabled(detailsAreIncomplete)
                     }
                 }
                 
@@ -92,6 +100,7 @@ struct AddWineView: View {
         wine.price = price
         wine.rating = Int16(rating)
         wine.notes = notes
+        wine.dateAdded = Date()
         
         do {
             try moc.save()

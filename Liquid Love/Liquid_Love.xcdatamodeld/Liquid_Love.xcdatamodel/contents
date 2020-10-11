@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Wine" representedClassName="Wine" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -12,6 +13,6 @@
         <attribute name="tasteCategory" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Wine" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Wine" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>

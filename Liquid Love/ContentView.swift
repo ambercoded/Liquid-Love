@@ -30,6 +30,7 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(wine.name ?? "Unknown Wine Name")
                                 .font(.headline)
+                                .foregroundColor(wine.rating >= 2 ? .primary : .red)
                             Text("\(wine.tasteCategory ?? "Unknown Style") \(wine.category ?? "Unknown Category")")
                                 .foregroundColor(.secondary)
                         }
