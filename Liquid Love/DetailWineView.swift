@@ -10,6 +10,9 @@ import CoreData
 
 struct DetailWineView: View {
     let wine: Wine
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+    @State private var deleteAlertIsShowing = false
     
     var body: some View {
         GeometryReader { geo in
@@ -38,11 +41,36 @@ struct DetailWineView: View {
                 Text("\(wine.price ?? "1000€") €")
                     .font(.caption)
                     .padding()
+                
+                Spacer()
+                
+                Button(action: showAlertPreDelete, label: {
+                    HStack {
+                        Image(systemName: "xmark")
+                        Text("Remove this wine")
+                    }
+                    .foregroundColor(.red)
+                    .padding()
+                })
             }
+        }
+        .alert(isPresented: $deleteAlertIsShowing) {
+            Alert(title: Text("Are you sure?"), message: Text("This will permanently remove this wine from your cellar."), primaryButton: .destructive(Text("Goodbye wine")) {
+                deleteThisWine()
+            }, secondaryButton: .cancel()
+            )
         }
         .navigationBarTitle(wine.name ?? "No name Wine")
     }
     
+    func showAlertPreDelete() {
+        deleteAlertIsShowing = true
+    }
+    
+    func deleteThisWine() {
+        moc.delete(wine)
+        self.presentationMode.wrappedValue.dismiss()
+    }
 }
 
 struct DetailWineView_Previews: PreviewProvider {

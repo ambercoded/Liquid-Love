@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Wine.entity(), sortDescriptors: [
-                    NSSortDescriptor(keyPath: \Wine.rating, ascending: false),
-                    NSSortDescriptor(keyPath: \Wine.name, ascending: true)
+        NSSortDescriptor(keyPath: \Wine.rating, ascending: false),
+        NSSortDescriptor(keyPath: \Wine.name, ascending: true)
     ]) var wines:
         FetchedResults<Wine>
     @State private var showingAddView = false
@@ -30,12 +30,13 @@ struct ContentView: View {
                                 .font(.headline)
                             Text("\(wine.tasteCategory ?? "Unknown Style") \(wine.category ?? "Unknown Category")")
                                 .foregroundColor(.secondary)
-                    }
+                        }
                     }
                 }
+                .onDelete(perform: deleteWines)
             }
             
-            .navigationBarItems(trailing: Button(action: { showingAddView.toggle() }, label: {
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: { showingAddView.toggle() }, label: {
                 Image(systemName: "plus")
             })
             )
@@ -43,6 +44,15 @@ struct ContentView: View {
                 AddWineView().environment(\.managedObjectContext, moc)
             })
         }
+    }
+    
+    func deleteWines(at offsets: IndexSet) {
+        for offset in offsets {
+            let wine = wines[offset]
+            moc.delete(wine)
+        }
+        
+        try? moc.save()
     }
 }
 
