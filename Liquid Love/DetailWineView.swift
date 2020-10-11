@@ -70,7 +70,9 @@ struct DetailWineView: View {
     func deleteThisWine() {
         moc.delete(wine)
         self.presentationMode.wrappedValue.dismiss()
+        try? moc.save()
     }
+    
 }
 
 struct DetailWineView_Previews: PreviewProvider {
