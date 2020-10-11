@@ -24,6 +24,7 @@ struct EmojiRatingView: View {
         default:
             Text("no rating")
         }
+        
     }
 }
 

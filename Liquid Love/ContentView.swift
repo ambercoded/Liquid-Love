@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
@@ -24,6 +25,7 @@ struct ContentView: View {
                     NavigationLink(destination: DetailWineView(wine: wine)) {
                         
                         EmojiRatingView(rating: wine.rating)
+                            .padding(.trailing, 8)
                         
                         VStack(alignment: .leading) {
                             Text(wine.name ?? "Unknown Wine Name")
@@ -35,6 +37,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteWines)
             }
+            .navigationBarTitle("Wine cellar")
             
             .navigationBarItems(leading: EditButton(), trailing: Button(action: { showingAddView.toggle() }, label: {
                 Image(systemName: "plus")
@@ -57,7 +60,19 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    
     static var previews: some View {
-        ContentView()
+        let wine = Wine(context: moc)
+        wine.name = "Ranger Blossom"
+        wine.category = "White wine"
+        wine.tasteCategory = "Sweet"
+        wine.price = "2,99"
+        wine.notes = "nothing bitter here"
+        wine.rating = Int16(4)
+        
+        return NavigationView {
+            ContentView()
+        }
     }
 }
