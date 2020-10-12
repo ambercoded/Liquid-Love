@@ -35,8 +35,8 @@ struct DetailWineView: View {
                 
                 if wine.notes == "" {
                     Text("You did not take any notes on this wine.")
-                    .italic()
                     .padding()
+                        .font(.caption)
                 } else {
                     Text("\"\(wine.notes ?? "notes placeholder")\"")
                     .italic()
@@ -44,11 +44,14 @@ struct DetailWineView: View {
                 }
                 
                 RatingView(rating: .constant(Int(wine.rating)))
+                    .padding()
                 
                 Text("\(wine.price ?? "1000€") €")
                     .padding()
                 
                 Text(composeDateAddedSentence(for: wine))
+                    .font(.caption)
+                    .padding()
                 
                 Spacer()
                 
@@ -84,9 +87,9 @@ struct DetailWineView: View {
     
     func composeDateAddedSentence(for wine: Wine) -> String {
         if let formattedDate = getFormattedWineAddedDate(for: wine) {
-            return "You added this wine on: \(formattedDate)"
+            return "Added on \(formattedDate)"
         } else {
-            return "Could not track when this wine was added."
+            return "Not sure when you added this wine."
         }
     }
     
